@@ -13,7 +13,8 @@ class History extends HTMLElement {
     render () {
         this.shadow.innerHTML =
         /*html*/`
-        <style>
+        <style>        
+           
             .history{
                 max-height: 80vh;
                 overflow-x: hidden; 

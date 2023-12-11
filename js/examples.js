@@ -15,6 +15,10 @@ class Examples extends HTMLElement {
         /*html*/`
         <style>
 
+            :host{
+                width: 100%;
+            }
+            
             .examples{
                 display: flex;
                 flex-wrap: wrap;
