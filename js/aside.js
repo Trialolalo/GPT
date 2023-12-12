@@ -39,19 +39,22 @@ class Aside extends HTMLElement {
             position: fixed;
             width: 2rem;
             top: 50vh;
-            left: 32vh;
+            left: 28vh;
           }
 
           .button-aside{
             width: 10px;
             cursor: pointer;
+            transition: all 0.5s;
 
           }
 
           .button-aside.active{
             position: fixed;
-            transform: translateX (-235px);
-            transition: all 2s;
+            transform: translateX(-235px);
+            transition: all 0.5s;
+            width: 10px;
+            cursor: pointer;
           }
 
           .button-aside span{

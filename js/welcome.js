@@ -3,13 +3,20 @@ class Welcome extends HTMLElement {
     constructor () {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
+      this.hideWelcome = this.handleCustomEvent.bind(this);
+
     }
   
     connectedCallback () {
 
-        this.render()
+        this.render();
+
     }
-  
+    
+    void () {
+        this.shadow.innerHTML = '';
+    }
+
     render () {
         this.shadow.innerHTML =
         /*html*/`

@@ -176,6 +176,18 @@ class Input extends HTMLElement {
                 send.classList.remove('active');
             }
         });
+
+        send.addEventListener("click", (event) => {
+
+            if (event.target.closest('.send-button')) {
+                document.dispatchEvent(new CustomEvent('hideWelcome'))
+            }
+
+            if (event.target.closest('.new-conversation-model-start')){
+                document.dispatchEvent(new CustomEvent('showWelcome'))
+            }
+
+        });
     }
 
 }
