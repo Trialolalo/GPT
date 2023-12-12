@@ -18,11 +18,12 @@
     <script type="module" src="js/app.js"></script>
   </head>
   <body>
-    <aside>
-      <conversations-component></conversations-component>
-      <history-component></history-component>
-      <user-component></user-component>
-    </aside>
+
+    <aside-component>
+      <conversations-component slot="content"></conversations-component>
+      <history-component slot="content"></history-component>
+      <user-component slot="content"></user-component>
+    </aside-component>
   
     <main>
       <div class="conversation">
