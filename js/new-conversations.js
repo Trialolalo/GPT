@@ -3,6 +3,7 @@ class NewConversations extends HTMLElement {
     constructor () {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
+      
     }
   
     connectedCallback () {
@@ -125,7 +126,14 @@ class NewConversations extends HTMLElement {
         </section>
              
       `
+        const newChat = this.shadow.querySelector('.new-conversation-model-start')
 
+        newChat.addEventListener("click", (event) => {
+
+            event.preventDefault();
+            document.dispatchEvent(new CustomEvent('newChat'))
+            
+        });
 
     }
 

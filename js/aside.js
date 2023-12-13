@@ -39,7 +39,7 @@ class Aside extends HTMLElement {
             position: fixed;
             width: 2rem;
             top: 50vh;
-            left: 28vh;
+            left: 30vh;
           }
 
           .button-aside{

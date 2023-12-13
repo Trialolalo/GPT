@@ -3,11 +3,21 @@ class Examples extends HTMLElement {
     constructor () {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
+      document.addEventListener('startChat', this.handleStartChat.bind(this))
+      document.addEventListener('newChat', this.handleNewChat.bind(this));
     }
   
     connectedCallback () {
 
         this.render()
+    }
+
+    handleStartChat (event) {
+        this.shadow.innerHTML = ``;
+    }
+
+    handleNewChat (event) {
+        this.render();
     }
   
     render () {

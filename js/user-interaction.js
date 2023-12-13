@@ -1,4 +1,4 @@
-class Input extends HTMLElement {
+class UserInt extends HTMLElement {
 
     constructor () {
       super()
@@ -176,8 +176,15 @@ class Input extends HTMLElement {
                 send.classList.remove('active');
             }
         });
+
+        send.addEventListener("click", (event) => {
+
+            event.preventDefault();
+            document.dispatchEvent(new CustomEvent('startChat'))
+            
+        });
     }
 
 }
   
-customElements.define('input-component', Input);
+customElements.define('user-interaction-component', UserInt);
