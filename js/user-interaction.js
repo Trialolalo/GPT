@@ -181,7 +181,7 @@ class UserInt extends HTMLElement {
 
             event.preventDefault();
             document.dispatchEvent(new CustomEvent('startChat'))
-            
+            document.dispatchEvent(new CustomEvent('newPrompt'))
         });
     }
 

@@ -5,6 +5,18 @@ class Chat extends HTMLElement {
       this.shadow = this.attachShadow({ mode: 'open' })
       document.addEventListener('startChat', this.handleStartChat.bind(this));
       document.addEventListener('newChat', this.handleNewChat.bind(this));
+      document.addEventListener('newPrompt', this.handleNewPrompt.bind(this));
+
+      this.prompts = [
+        {
+            "user": "Tú",
+            "input": ""
+        },
+        {
+            "gpt": "ChatGPT",
+            "answer": ""
+          },
+      ]
     }
   
     connectedCallback () {
@@ -17,6 +29,11 @@ class Chat extends HTMLElement {
 
     handleNewChat (event) {
         this.render();
+    }
+
+    handleNewPrompt (event) {
+        this.newUserMessage(event);
+        // this.newModelMessage(event);
     }
 
     render () {
