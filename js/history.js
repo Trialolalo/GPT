@@ -156,22 +156,6 @@ class History extends HTMLElement {
                         <li><a href="">Novedades CSS 2022 destacadas</a></li>
                         <li><a href="">Generador CRUD con Express & Sequelize</a></li>
                         <li><a href="">Cómo iniciar un proyecto de React</a></li>
-                        <li><a href="">Novedades PHP 8.1</a></li>
-                        <li><a href="">Novedades CSS 2022 destacadas</a></li>
-                        <li><a href="">Generador CRUD con Express & Sequelize</a></li>
-                        <li><a href="">Cómo iniciar un proyecto de React</a></li>
-                        <li><a href="">Novedades PHP 8.1</a></li>
-                        <li><a href="">Novedades CSS 2022 destacadas</a></li>
-                        <li><a href="">Generador CRUD con Express & Sequelize</a></li>
-                        <li><a href="">Cómo iniciar un proyecto de React</a></li>
-                        <li><a href="">Novedades PHP 8.1</a></li>
-                        <li><a href="">Novedades CSS 2022 destacadas</a></li>
-                        <li><a href="">Generador CRUD con Express & Sequelize</a></li>
-                        <li><a href="">Cómo iniciar un proyecto de React</a></li>
-                        <li><a href="">Novedades PHP 8.1</a></li>
-                        <li><a href="">Novedades CSS 2022 destacadas</a></li>
-                        <li><a href="">Generador CRUD con Express & Sequelize</a></li>
-                        <li><a href="">Cómo iniciar un proyecto de React</a></li>
                         <li><a href="">Hola</a></li>
                         <li><a href="">Buenos días</a></li>
                         </ul>

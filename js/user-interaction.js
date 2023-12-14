@@ -160,11 +160,9 @@ class UserInt extends HTMLElement {
                 </div>
             </form>
         </section>
-  
-             
-      `
-    
 
+    `
+    
     const validate = this.shadow.querySelector("textarea");
     const send = this.shadow.querySelector('.send-button');
     
@@ -178,10 +176,18 @@ class UserInt extends HTMLElement {
         });
 
         send.addEventListener("click", (event) => {
+            const inputText = validate.value;
 
             event.preventDefault();
             document.dispatchEvent(new CustomEvent('startChat'))
-            document.dispatchEvent(new CustomEvent('newPrompt'))
+
+            document.dispatchEvent(new CustomEvent('newPrompt', {
+                detail: {
+                  prompt: inputText,
+                }
+            }));
+
+            validate.value = "";
         });
     }
 

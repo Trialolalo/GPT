@@ -20,12 +20,11 @@ main{
 }
 
 .conversation{
-  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 75vh;
-  width: 40%;
+  width: 65%;
 }
 
 .user-interaction{

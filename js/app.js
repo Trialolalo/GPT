@@ -5,4 +5,3 @@ import './history.js';
 import './chat.js';
 import './user.js';
 import './aside.js';
-import './prompt.js';

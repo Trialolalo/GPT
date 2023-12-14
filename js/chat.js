@@ -7,16 +7,7 @@ class Chat extends HTMLElement {
       document.addEventListener('newChat', this.handleNewChat.bind(this));
       document.addEventListener('newPrompt', this.handleNewPrompt.bind(this));
 
-      this.prompts = [
-        {
-            "user": "Tú",
-            "input": ""
-        },
-        {
-            "gpt": "ChatGPT",
-            "answer": ""
-          },
-      ]
+      
     }
   
     connectedCallback () {
@@ -32,8 +23,8 @@ class Chat extends HTMLElement {
     }
 
     handleNewPrompt (event) {
-        this.newUserMessage(event);
-        // this.newModelMessage(event);
+        this.newUserMessage(event.detail.prompt);
+        this.newModelMessage(event);
     }
 
     render () {
@@ -72,6 +63,102 @@ class Chat extends HTMLElement {
                 font-size: 1.3rem;
                 margin: 0;
             }
+
+            .prompts {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                max-height: 70vh;
+                justify-content: flex-start;
+                overflow-x: hidden; 
+                overflow-y: auto;
+            }
+
+            .prompts::-webkit-scrollbar{
+                background: transparent; 
+                width: 0;
+            }
+
+            .prompts:hover::-webkit-scrollbar{
+                width: 5px; 
+            }
+
+            .prompts:hover::-webkit-scrollbar-thumb{
+                background-color: hsl(0, 0%, 53%); 
+                border-radius: 1rem;
+            }
+
+            .prompts:hover::-webkit-scrollbar-thumb:hover{
+                background-color: hsl(0, 0%, 78%); 
+            }
+
+
+            .prompt {
+                display: flex;
+                gap: 1rem;
+                padding: 0.5rem;
+                justify-content: flex-start;
+            }
+
+            .message{
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            img{
+                align-items: center;
+                border-radius: 50%;
+                display: flex;
+                height: 2rem;
+                justify-content: center;
+                overflow: hidden;
+                width: 2rem;
+            }
+
+            h3 {
+                margin: 0;
+                font-family: "SoehneBuch", sans-serif;
+                color: white;
+            }
+
+            p {
+                margin: 0;
+                font-family: "SoehneBuch", sans-serif;
+                color: white;
+            }
+
+            .response {
+                display: flex;
+                gap: 1rem;
+                padding: 0.5rem;
+                justify-content: flex-start;
+            }
+
+            .input-chat{
+                margin: 0.5rem;
+                animation-name: pulse;
+                animation-duration: 1.4s;
+                animation-play-state: running;
+                animation-iteration-count: infinite;
+                background: hsl(0, 0%, 100%);
+                height: 5px;
+                width: 5px;
+                border-radius: 5px;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);   
+                }
+                50% {
+                    transform: scale(2);
+                }
+                100% {
+                    transform: scale(1); 
+                }
+                }
+          
            
         </style>
 
@@ -87,11 +174,74 @@ class Chat extends HTMLElement {
             </article>
         </section>
 
-      `
+        <div class="prompts">
+                
+        
+        </div>
 
-
+      ` 
+        
     }
 
+    newUserMessage(prompt){
+
+        const promptsContainer = this.shadow.querySelector('.prompts');
+        const promptContainer = document.createElement('div');
+        promptContainer.classList.add('prompt');
+
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message');
+
+        const avatarContainer = document.createElement('div');
+        avatarContainer.classList.add('avatar');
+
+        const user = document.createElement('h3');
+        user.textContent = "Tú";
+        messageContainer.appendChild(user);
+
+        const input = document.createElement('p');
+        input.textContent = prompt;
+        messageContainer.appendChild(input);
+
+        const img = document.createElement('img');
+        img.setAttribute("src", "images/user-avatar.png");
+        avatarContainer.appendChild(img);
+
+        promptContainer.appendChild(avatarContainer);
+        promptContainer.appendChild(messageContainer);
+
+        promptsContainer.appendChild(promptContainer)
+    }
+
+    newModelMessage(event){
+
+        const responsesContainer = this.shadow.querySelector('.prompts');
+        const responseContainer = document.createElement('div');
+        responseContainer.classList.add('response');
+
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message');
+
+        const avatarContainer = document.createElement('div');
+        avatarContainer.classList.add('avatar');
+
+        const user = document.createElement('h3');
+        user.textContent = "ChatGPT";
+        messageContainer.appendChild(user);
+
+        const inputContainer = document.createElement('div');
+        inputContainer.classList.add('input-chat');
+        messageContainer.appendChild(inputContainer);
+
+        const img = document.createElement('img');
+        img.setAttribute("src", "https://c02.purpledshub.com/uploads/sites/62/2018/06/GettyImages-523391885-369e40a.jpg?w=940&webp=1");
+        avatarContainer.appendChild(img);
+
+        responseContainer.appendChild(avatarContainer);
+        responseContainer.appendChild(messageContainer);
+
+        responsesContainer.appendChild(responseContainer);
+    }
 }
   
 customElements.define('chat-component', Chat);
