@@ -92,7 +92,6 @@ class Chat extends HTMLElement {
                 background-color: hsl(0, 0%, 78%); 
             }
 
-
             .prompt {
                 display: flex;
                 gap: 1rem;
@@ -101,7 +100,6 @@ class Chat extends HTMLElement {
             }
 
             .message{
-
                 display: flex;
                 flex-direction: column;
             }
@@ -183,6 +181,8 @@ class Chat extends HTMLElement {
         
     }
 
+    
+
     newUserMessage(prompt){
 
         const promptsContainer = this.shadow.querySelector('.prompts');
@@ -210,7 +210,9 @@ class Chat extends HTMLElement {
         promptContainer.appendChild(avatarContainer);
         promptContainer.appendChild(messageContainer);
 
-        promptsContainer.appendChild(promptContainer)
+        promptsContainer.appendChild(promptContainer);
+
+        
     }
 
     newModelMessage(event){
@@ -241,6 +243,8 @@ class Chat extends HTMLElement {
         responseContainer.appendChild(messageContainer);
 
         responsesContainer.appendChild(responseContainer);
+
+        responseContainer.scrollIntoView({ behavior: "smooth", block: "end" });
     }
 }
   
