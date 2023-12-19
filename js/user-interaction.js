@@ -4,11 +4,26 @@ class UserInt extends HTMLElement {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
     }
+
+    static get observedAttributes () {
+        return ['response-state']
+    }
   
     connectedCallback () {
-
-
         this.render()
+    }
+    
+    attributeChangedCallback (name, oldValue, newValue){
+
+        if(name == "response-state"){
+            if(newValue == "true"){
+                this.shadow.querySelector('.send-button button').parentElement.classList.remove('visible');
+                this.shadow.querySelector('.stop-button button').parentElement.classList.add('visible');
+            }else{
+                this.shadow.querySelector('.send-button button').parentElement.classList.add('visible');
+                this.shadow.querySelector('.stop-button button').parentElement.classList.remove('visible');
+            }
+        }
     }
   
     render () {
@@ -301,10 +316,9 @@ class UserInt extends HTMLElement {
                 }
             }));
 
-            sendButton.parentElement.classList.remove('visible');
-            stopButton.parentElement.classList.add('visible');
-
+           
             this.render()
+            this.setAttribute("response-state", true)
         });
 
         stopButton.addEventListener("click", (event) => {

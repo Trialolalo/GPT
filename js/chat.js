@@ -6,7 +6,7 @@ class Chat extends HTMLElement {
       document.addEventListener('startChat', this.handleStartChat.bind(this));
       document.addEventListener('newChat', this.handleNewChat.bind(this));
       document.addEventListener('newPrompt', this.handleNewPrompt.bind(this));
-
+      
       
     }
   
@@ -133,6 +133,23 @@ class Chat extends HTMLElement {
                 justify-content: flex-start;
             }
 
+            .ai-response {
+                overflow: hidden;
+                white-space: nowrap;
+                width: auto;
+                animation: writeText 0.75s steps(50, end);
+
+            }
+                
+            @keyframes writeText {
+                from {
+                    width: 0;
+                }
+                to {
+                    width: 100%;
+                }
+            }
+
             .input-chat{
                 margin: 0.5rem;
                 animation-name: pulse;
@@ -182,7 +199,6 @@ class Chat extends HTMLElement {
     }
 
     
-
     newUserMessage(prompt){
 
         const promptsContainer = this.shadow.querySelector('.prompts');
@@ -194,6 +210,7 @@ class Chat extends HTMLElement {
 
         const avatarContainer = document.createElement('div');
         avatarContainer.classList.add('avatar');
+
 
         const user = document.createElement('h3');
         user.textContent = "Tú";
@@ -211,8 +228,6 @@ class Chat extends HTMLElement {
         promptContainer.appendChild(messageContainer);
 
         promptsContainer.appendChild(promptContainer);
-
-        
     }
 
     newModelMessage(event){
@@ -231,6 +246,13 @@ class Chat extends HTMLElement {
         user.textContent = "ChatGPT";
         messageContainer.appendChild(user);
 
+
+        const aiResponse = document.createElement('p');
+        aiResponse.classList.add('ai-response');
+        aiResponse.textContent = "No quiero escribir";
+        messageContainer.appendChild(aiResponse);
+
+
         const inputContainer = document.createElement('div');
         inputContainer.classList.add('input-chat');
         messageContainer.appendChild(inputContainer);
@@ -245,6 +267,8 @@ class Chat extends HTMLElement {
         responsesContainer.appendChild(responseContainer);
 
         responseContainer.scrollIntoView({ behavior: "smooth", block: "end" });
+
+
     }
 }
   
